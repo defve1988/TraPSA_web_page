@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/temp.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>GIS Functions</title>
+<script src="../SpryAssets/SpryAccordion.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryAccordion.css" rel="stylesheet" type="text/css" />
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+
+<script src="../SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+
+</style><link href="../SpryAssets/T1.css" rel="stylesheet" type="text/css" /><style type="text/css">
+.head {
+	position: relative;
+	width: 90%;
+	left: 5%;
+}
+.main {
+	position: relative;
+	width: 90%;
+	left: 5%;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 24px;
+	color: #003;
+}
+.fun{
+	color: #F00;
+	}
+.string{
+	color: #63F;
+	}
+.anno{
+	color: #060;
+	}
+#la {
+	position: absolute;
+	left: 90%;
+	top: 35px;
+	width: 107px;
+	height: 10px;
+	z-index: 4;
+}
+</style>
+</head>
+
+<body >
+<div class="head">
+<div class="T2" id="la"><a href="../home.html">EN </a>| <a href="../中文/主页.html">中文</a></div>
+<div class="B">
+<span class="T1">TraPSA</span><br/>
+<span class="T2">Trajectory-based Potential Sourece Apportionment Project</span>
+<div class="split">.</div>
+</div>
+
+<ul id="MenuBar1" class="MenuBarHorizontal">
+  <li><a href="../home.html">Introduction</a>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="getstarted.html">Getting Start</a>
+      <ul>
+      <li><a href="basic.html">Basic Entries</a></li>
+      <li><a href="userguide.html">User's Guide</a></li>
+      <li><a href="example.html">Examples</a></li>
+      <li><a href="update.html">Updates</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="matlab.html">Matlab Package</a>
+      <ul>
+      <li><a href="receptormodel.html">Receptor Models</a></li>
+      <li><a href="trend.html">Trend Analysis</a></li>
+      <li><a href="gisfunction.html">GIS Functions</a></li>
+      <li><a href="otherfunction.html">Other Functions</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="downloads.html">Downloads</a>
+        <ul>
+      <li><a href="downloadtrapsa.html">TraPSA</a></li>
+      <li><a href="downloadmatlabcode.html">Matlab Package</a></li>
+      <li><a href="downloaddata.html">Map&MET Data</a></li>
+    </ul>
+  </li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"../SpryAssets/SpryMenuBarDownHover.gif", imgRight:"../SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+<br/>
+</div>
+
+<!-- InstanceBeginEditable name="main" -->
+<div class="main">
+<br/>
+  <strong>GIS Function:</strong>
+<div id="Accordion2" class="Accordion">
+    <div class="AccordionPanel">
+      <div class="AccordionPanelTab">Grid Weighting</div>
+      <div class="AccordionPanelContent"><span class="fun"><strong>weight</strong></span>
+        <hr/>
+      
+        Calculate the weighted grid value.<br/><br/>
+        <strong>Syntax</strong><hr/>
+<span class="string">g </span>= weight (<span class="string">value</span>,<span class="string">endpoint</span>,<span class="string">W</span>)<br/>
+        <br/>
+        <strong>Description</strong><hr/>
+        <span class="string">g </span>= weight (<span class="string">value</span>,<span class="string">endpoint</span>,<span class="string">W</span>) returns the matrix <span class="string">g</span> after weighting.<span class="string">value</span> is a grid matrix need to be weighted; <span class="string">endpoint</span> is the  endpoints number matrix  corresponding to <span class="string">value</span>; <span class="string">W</span> is a N by 2 weight factor matrix. N is weigth level number, the first column of <span class="string">W</span> is the  upper bound of weight level, the second column of <span class="string">W</span> is the corresponding weight factors of this level. Say <span class="string">W</span> equals [0.3 0.1;0.5 0.5;1 1], then the weight level is 3, the first level is 0~0.3 of average <span class="string">endpoint</span> number with weight factor at 0.1, the second level is 0.3~0.5 of average <span class="string">endpoint</span> number with weight factor at 0.5, and the final level is 0.5~1 of average <span class="string">endpoint</span> number with weight factor at 1.<br/>
+        <br/>
+      
+      </div>
+    </div>
+    <div class="AccordionPanel">
+      <div class="AccordionPanelTab">Grid Smoothing</div>
+      <div class="AccordionPanelContent">
+      <span class="fun"><strong>gridsmooth</strong></span>
+      <hr/>
+      Smooth the  grid value.<br/><br/>
+        <strong>Syntax</strong><hr/>
+        <span class="string">g</span><span class="string"></span> = gridsmooth (<span class="string">grid</span>)<br/>
+        <br/>
+        <strong>Description</strong><hr/>
+        <span class="string">g</span><span class="string"></span> = gridsmooth (<span class="string">grid</span>) returns the matrix <span class="string">g</span> after smoothing of original grid matrix <span class="string">grid</span>.<br/><br/>
+      </div>
+    </div>
+    <div class="AccordionPanel">
+      <div class="AccordionPanelTab">Peak Identification</div>
+      <div class="AccordionPanelContent">
+      <span class="fun"><strong>gridpeak</strong></span>
+      <hr/>
+      
+        Determine the grid peaks.<br/><br/>
+        <strong>Syntax</strong><hr/>
+        [<span class="string">x</span>,<span class="string">y</span>,<span class="string">value</span>] = gridpeak (<span class="string">grid</span>,<span class="string">number</span>)<br/>
+        <br/>
+        <strong>Description</strong><hr/>
+        [<span class="string">x</span>,<span class="string">y</span>,<span class="string">value</span>] = gridpeak (<span class="string">grid</span>,<span class="string">number</span>) returns the highest peak location [<span class="string">x</span>,<span class="string">y</span>] and  <span class="string">value</span>. <span class="string">grid</span> is a grid matrix need to analysis; <span class="string">number</span> is the returnd peak number.<br/><br/>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+<script type="text/javascript">
+var Accordion2 = new Spry.Widget.Accordion("Accordion2");
+</script>
+<!-- InstanceEndEditable -->
+
+
+<div class="suf">
+<hr>
+© 2016 by Chuanlong Zhou. The center for Air Resource Engineering &amp; Science (CARES), Clarkson University.
+<br/>
+<br/>
+<br/>
+</div>
+
+</body>
+<!-- InstanceEnd --></html>

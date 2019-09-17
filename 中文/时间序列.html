@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/tempcn.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>时间序列</title>
+<script src="../SpryAssets/SpryAccordion.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryAccordion.css" rel="stylesheet" type="text/css" />
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+
+<script src="../SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+
+</style><link href="../SpryAssets/T1.css" rel="stylesheet" type="text/css" /><style type="text/css">
+.head {
+	position: relative;
+	width: 90%;
+	left: 5%;
+}
+.main {
+	position: relative;
+	width: 90%;
+	left: 5%;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 24px;
+	color: #003;
+}
+.fun{
+	color: #F00;
+	}
+.string{
+	color: #63F;
+	}
+.anno{
+	color: #060;
+	}
+#la {
+	position: absolute;
+	left: 90%;
+	top: 35px;
+	width: 112px;
+	height: 10px;
+	z-index: 4;
+}
+</style>
+</head>
+
+<body >
+<div class="head">
+<div class="T2" id="la"><a href="../home.html">EN </a>| <a href="主页.html">中文</a></div>
+<div class="B">
+<span class="T1">TraPSA</span><br/>
+<span class="T2">轨迹追踪受体模型空气污染源分析工具</span>
+<div class="split">.</div>
+</div>
+
+<ul id="MenuBar1" class="MenuBarHorizontal">
+  <li><a href="主页.html">主页</a>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="使用软件.html">使用软件</a>
+      <ul>
+      <li><a href="基础知识.html">基础知识</a></li>
+      <li><a href="用户手册.html">用户手册</a></li>
+      <li><a href="应用实例.html">应用实例</a></li>
+      <li><a href="软件更新.html">软件更新</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="Matlab函数.html">Matlab函数</a>
+      <ul>
+      <li><a href="受体模型.html">受体模型</a></li>
+      <li><a href="时间序列.html">时间序列</a></li>
+      <li><a href="GIS函数.html">GIS函数</a></li>
+      <li><a href="其他函数.html">其他函数</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="下载.html">下载</a>
+        <ul>
+      <li><a href="TraPSA软件.html">TraPSA软件</a></li>
+      <li><a href="Matlab函数包.html">Matlab函数包</a></li>
+      <li><a href="地图和气象数据.html">地图和气象数据</a></li>
+    </ul>
+  </li>
+  <li><a href="联系与合作.html">联系与合作</a></li>
+</ul>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"../SpryAssets/SpryMenuBarDownHover.gif", imgRight:"../SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+<br/>
+</div>
+
+<!-- InstanceBeginEditable name="main" -->
+<div class="main">
+  <br/><strong>时间序列分析:</strong><br/>
+  <div id="Accordion1" class="Accordion">
+    <div class="AccordionPanel">
+      <div class="AccordionPanelTab">Kendall's tau相关系数</div>
+      <div class="AccordionPanelContent">
+      <span class="fun"><strong>kendall</strong></span><hr/>
+      
+        计算Kendall's tau相关系数。<br/>
+        <br/>
+        <strong>句法</strong>
+        <hr/>
+        [<span class="string">tau</span>,<span class="string">p</span>] = kendall (<span class="string">date</span>,<span class="string">conc</span>)<br/><br/>
+        <strong>描述</strong>
+        <hr/>
+        [<span class="string">tau</span>,<span class="string">p</span>] = kendall (<span class="string">date</span>,<span class="string">conc</span>) 返回Kendall's tau-b相关系数和假设检验的<span class="string">p</span>值。[<span class="string">date</span>,<span class="string">conc</span>]为污染物时间序列，大小都为N×1。如果<span class="string">p</span>小于0.05，那么Kendall's tau相关是显著的。<br/>
+        <br/>
+      </div>
+    </div>
+    <div class="AccordionPanel">
+      <div class="AccordionPanelTab">Theil-Sen斜率估计</div>
+      <div class="AccordionPanelContent">
+      <span class="fun"><strong>sen</strong></span><hr/>
+      
+        计算Theil-Sen斜率估计和截距。<br/>
+        <br/>
+        <strong>句法Syntax</strong>
+        <hr/>
+        [<span class="string">slope</span>,<span class="string">intercept</span>] = sen (<span class="string">date</span>,<span class="string">conc</span>,<span class="string">plot</span>)<br/><br/>
+        <strong>描述Description</strong>
+        <hr/>
+        [<span class="string">slope</span>,<span class="string">intercept</span>] = sen (<span class="string">date</span>,<span class="string">conc</span>,<span class="string">plot</span>) 返回Theil-Sen斜率<span class="string">slope</span>和截距<span class="string">intercept</span>。[<span class="string">date</span>,<span class="string">conc</span>]为污染物时间序列，大小都别为N×1。如果<span class="string">plot</span>等于1，则会返回Theil-Sen和线性回归对比的图像。<br/>
+        <br/>
+      </div>
+    </div>
+  </div>
+  <br/>
+  </div>
+  <script type="text/javascript">
+var Accordion1 = new Spry.Widget.Accordion("Accordion1");
+</script>
+<!-- InstanceEndEditable -->
+
+
+<div class="suf">
+<hr>
+© 2016 周传龙，克拉克森大学，空气资源工程与科学中心<br/>
+<br/>
+<br/>
+</div>
+
+</body>
+<!-- InstanceEnd --></html>

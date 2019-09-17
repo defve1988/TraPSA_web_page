@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/temp.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>User's Guide</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+
+<script src="../SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+
+</style><link href="../SpryAssets/T1.css" rel="stylesheet" type="text/css" /><style type="text/css">
+.head {
+	position: relative;
+	width: 90%;
+	left: 5%;
+}
+.main {
+	position: relative;
+	width: 90%;
+	left: 5%;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 24px;
+	color: #003;
+}
+.fun{
+	color: #F00;
+	}
+.string{
+	color: #63F;
+	}
+.anno{
+	color: #060;
+	}
+#la {
+	position: absolute;
+	left: 90%;
+	top: 35px;
+	width: 107px;
+	height: 10px;
+	z-index: 4;
+}
+</style>
+</head>
+
+<body >
+<div class="head">
+<div class="T2" id="la"><a href="../home.html">EN </a>| <a href="../中文/主页.html">中文</a></div>
+<div class="B">
+<span class="T1">TraPSA</span><br/>
+<span class="T2">Trajectory-based Potential Sourece Apportionment Project</span>
+<div class="split">.</div>
+</div>
+
+<ul id="MenuBar1" class="MenuBarHorizontal">
+  <li><a href="../home.html">Introduction</a>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="getstarted.html">Getting Start</a>
+      <ul>
+      <li><a href="basic.html">Basic Entries</a></li>
+      <li><a href="userguide.html">User's Guide</a></li>
+      <li><a href="example.html">Examples</a></li>
+      <li><a href="update.html">Updates</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="matlab.html">Matlab Package</a>
+      <ul>
+      <li><a href="receptormodel.html">Receptor Models</a></li>
+      <li><a href="trend.html">Trend Analysis</a></li>
+      <li><a href="gisfunction.html">GIS Functions</a></li>
+      <li><a href="otherfunction.html">Other Functions</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="downloads.html">Downloads</a>
+        <ul>
+      <li><a href="downloadtrapsa.html">TraPSA</a></li>
+      <li><a href="downloadmatlabcode.html">Matlab Package</a></li>
+      <li><a href="downloaddata.html">Map&MET Data</a></li>
+    </ul>
+  </li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"../SpryAssets/SpryMenuBarDownHover.gif", imgRight:"../SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+<br/>
+</div>
+
+<!-- InstanceBeginEditable name="main" -->
+<div class="main">
+<br/>
+  <a name="top" id="top"></a><strong>Index:</strong> <br/>
+  <a href="#intro">1. Software Introduction</a><br/>
+  <a href="#struc">2. Software Structure</a><br/>
+  <a href="#datar">3. Data Required</a><br/>
+  <a href="#algor1">4. Trajectory Ensemble Receptor Model Algorithm</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#cpf">4.1 Conditional  Probability Function (CPF)</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#cfa">4.2 Concentration  Field Analysis (CFA)</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#cwt">4.3 Concentration  Weighted Trajectory (CWT)</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#rtwc">4.4 Residence  Time Weighted Concentration (RTWC)</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#pscf">4.5 Potential  Source Contribution Function (PSCF) and multiple-site PSCF</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#sqtba">4.6 Simplified  Quantitative Transport Bias Analysis (SQTBA)</a><br/>
+  <a href="#algor2">5. Trend Analysis Algorithm</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#mk">5.1 Kendall's tau</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#sen">5.2 Sen's Slope</a><br/>
+  <a href="#algor3">6. GIS Function Algorithm</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#smoothing">6.1 Grid Smoothing</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#peak">6.2 Grid Peak Identification</a><br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#weight">6.3 Grid Weight</a><br/>
+  <a href="#ack">7. Acknowledgement</a><br/>
+<br/>
+  <a href="../download/TraPSA Software User's Guide.pdf" target="_blank">View User's Guide and Examples.pdf</a><br/>
+  <br/>
+
+<hr/>
+<a name="intro" id="intro"></a> <strong>1. Software Introduction:</strong><br/>
+  <blockquote>
+  TraPSA (Trajectory-based Potential Source Apportionment) software is a graphical air pollution source analysis tool based on air pollutant measurements and a state-of-art air mass back trajectories model <a href="http://www.arl.noaa.gov/HYSPLIT_info.php" target="_blank">HYSPLIT-4</a>. TraPSA aims to provide researchers and students an integrated and user-friendly platform for air pollutant database development and managment, pollutant pattern and trend analysis, and potential source identification, especially on applying, comparing and exploring current popular trajectory ensemble receptor models.<br/><br/>
+  <center><img src="../image/formula/main.png" width="1181" height="456" /></center><br/>
+  <center>Main Interface of TraPSA</center><p>
+  Database of pollutant monitoring site could be established in TraPSA.  Smart back trajectory method in TraPSA could help users easy to set up, calculate and import trajectory.TraPSA includes current popular algorithms of trajectory ensemble receptor models, Conditional Probability Function (CPF), Concentration Field Analysis (CFA), Concentration Weighted Trajectory (CWT), Residence Time Weighted Concentration (RTWC), Potential Source Contribution Function (PSCF), and Simplified Quantitative Transport Bias Analysis (SQTBA). TraPSA provides users sufficient GIS editing function for air pollutant source apportionment, also, GIS data files (ESRI shape file and Geo TIFF file) could be imported or exported by TraPSA, therefore further research or editing by professional GIS software is possible.<br/>
+  <br/>
+   TraPSA is developed as an extension package of HYSPLIT_4 software, it can be linked to HYSPLIT_4 installation on the computer. However, TraPSA  can be used  without installation of the full HYSPLIT_4 software suite because TraPSA software includes an  unregistered version of the HYSPLIT_4 trajectory model executable. It is strongly recommended that users should correctly register and install HYSPLIT software suite in order to generate the trajectory  with the  latest HYSPLT version.<br/>
+  <br/>
+  TraPSA was programed in MATLAB 2015b. It is  only executable on Windows OS platforms and a 1920 X 1080 screen resolution is recommended. <a href="http://www.mathworks.com/products/compiler/mcr/" target="_blank">MATLAB runtime</a> is required to run TraPSA  so that the full version of MATLAB is not necessary.  MATLAB runtime will automatically be downloaded if it  hasn&rsquo;t already been installed on the computer.<br/>
+  
+  <br/>
+  <a href="#top" class="top">Go Top</a><br/>
+    </blockquote>
+<hr/>
+<a name="struc" id="struc"></a><strong>2. Software Structure:</strong><br/>
+<blockquote>
+ <p>The structure of TraPSA is shown in following figure, the grey blocks show the data required by TraPSA. Air pollutant monitoring site database should be firstly established with site information and pollutant measurement data. Trajectory endpoints will be generated based on pollutant measurement date using meteorological data and HYSPLIT model. As an optional data-in, trajectory endpoints  could be imported into database if the files  are previously generated by HYSPLIT_4.</p>
+  <center><img src="../image/formula/str2.png" width="661" height="528" /></center><br/>
+   <center>Structure of TraPSA</center><p>
+ <p>Then the pollutant data and corresponding trajectory endpoints could be extracted from database and used for analysis.  TraPSA contains both pollutant pattern analysis, trend analysis, and trajectory ensemble receptor models (including CPF, CFA, CWT, RTWC, PSCF, and SQTBA) for potential source likely location identification. ESRI shapefile of related region are required to correctly display the results of trajectory ensemble receptor models. Any figures generated by TPBS can be exported including their numerical data. Trajectory endpoints and map raster can be exported as GIS data formats (ESRI shape file and Geo TIFF file) if further analysis and edit is necessary in other GIS software.<br/>
+
+<br/>
+<a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+
+<hr/>
+<a name="datar" id="datar"></a><strong>3. Data Required:</strong><br/>
+<blockquote>
+<p><a href="downloaddata.html">Meteorological data</a> is required by TraPSA for generating HYSPLIT trajectory. Various meteorological data formats are avaliable as long as they are recognizable by HYSPLIT_4, also HYSPLIT_4 suite contains numerous converters that  users can convert data into HYSPLIT format. Typically, the Eta  Data Assimilation System (EDAS) with the 40 km resolution data and North American Regional Reanalysis (NARR) data are used for  North American locations. The Global Data Assimilation System (GDAS)    and the NCEP/NCAR Reanalysis Archive have been used for sites in Europe and Asia. In addition, NOAA  ARL maintains an archive of meteorological datasets called <a href="https://ready.arl.noaa.gov/index.php" target="_blank">&quot;Ready&quot;</a> in HYSPLIT format that can  be used to drive the HYSPLIT trajectory model (as well as other HYSPLIT  executables).<br/>
+<br/>
+<a href="downloaddata.html">ESRI shapefiles</a> is required to display map in TraPSA. Two GIS data formats, ESRI shapefile (‘.shp’, ‘.dbf’ and ‘.shx’) and GeoTIFF file (‘.tif’) are available for TraPSA. Shapefiles of related regions should be download before analyzing. Note that it will take longer time to display more specified shapefiles.<br/><br/>
+Pollutants measurement data is required for receptor models. The import file format could be ‘.cvs’, ‘xlsx’ or ‘.xls’. Data should contain species names, units, collection date and concentration, the in-file format should be organized as following figure. Note that collection date format could be alterable as long as identifiable by TraPSA, but must including year, month, day and hour information. TraPSA will handle the date format, missing data and replicate data automatically.<br/>
+<center><img src="../image/formula/import.png" width="399" height="431" /></center><br/>
+<center>Input Pollutant Measurement Data Format</center>
+<p>
+<a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+<hr/>
+<a name="algor1" id="algor1"></a><strong>4. Trajectory Ensemble Receptor Model Algorithm:</strong><br/>
+<blockquote>
+Trajectory ensemble receptor model is one of the receptor models for air pollution source likely location apportionment combining pollutant concentration measurement data and air parcel back trajectory calculations.  TraPSA includes current popular algorithms of trajectory ensemble receptor models, Conditional Probability Function (CPF), Concentration Field Analysis (CFA), Concentration Weighted Trajectory (CWT), Potential Source Contribution Function (PSCF), Residence Time Weighted Concentration (RTWC), and Simplified Quantitative Transport Bias Analysis (SQTBA).<br/>
+<hr/><br/>
+<a name="cpf" id="cpf"></a>4.1 Conditional  Probability Function (CPF)<br/>
+<blockquote>
+CPF determines the probability of a wind direction to be associated with specific pollutant levels and can be useful for determining local source directions. A criterion value C (which is adjustable in TraPSA) representing the measured high concentration events is arbitrarily set (usually 75%~90% of the highest concentration); then the CPF value for different wind directions is calculated as:<p>
+<img src="../image/formula/cpf.gif" width="790" height="196" /><p>
+Note that the wind direction has a large uncertainty for low speeds (typically 5 km/h, the parameter can be manually set), therefore these data should be discarded. Also note that the wind speed and direction, which is generated by HYSPLIT4, will probably change with the trajectory starting height used.<p>
+<a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+<hr/><a name="cfa" id="cfa"></a>4.2 Concentration  Field Analysis (CFA)<br/>
+<blockquote>
+<p>The CFA model determines air pollutant source by combining concentration measurements with back trajectories. For this method, the whole geographic region  is divided into an array of grid cells defined by the cell indices i and j. Back-trajectories (presenting as l) will be generated at  concentration measurement time at receptor site as the back-trajectory starting times. Trajectory endpoints in grid cells (presenting as τ) will be counted after back-trajectory calculation.    If a trajectory endpoint lies in the grid cell, the trajectory is assumed to collect and transport the material emitted in this cell along the trajectory to the receptor site. The CFA values then can be calculated as follow, and a grid cell with lager CFA value implies the higher contribution of pollutant to the receptor site: </p>
+<p>
+  <img src="../image/formula/CFA.gif" width="856" height="300" /><p><a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+<hr/><a name="cwt" id="cwt"></a>4.3 Concentration  Weighted Trajectory (CWT)<br/>
+<blockquote>
+ <p>The concentration field values of the grids that hit by the trajectory with a concentration close to 0 at receptor site will significantly reduce due to the logarithmic calculations in CFA. The CWT model is a modificated method of CFA using linear calculation, which is robust to the trace pollutant measurement. The CWT values can be calculated as follows: </p>
+ <p>
+  <img src="../image/formula/cwt.gif" width="856" height="300" /><p><a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+<hr/>
+<a name="rtwc" id="rtwc"></a>4.4 Residence  Time Weighted Concentration (RTWC)
+<blockquote>
+<p>In order to determinate a large source from a moderate source, the RTWC  model is used for calculate a grid concentration field. The rational of the redistribution in RTWC approach is no major pollutant sources are located along a &lsquo;&lsquo;clean&rsquo;&rsquo; trajectory (with verylow concentration at the receptor site). The &lsquo;&lsquo;polluted&rsquo;&rsquo; trajectory (with high concentration at the receptor site) must have taken up the emission along its path where no &lsquo;&lsquo;clean&rsquo;&rsquo; trajectories pass. The initial field can be calculated by CWT or CFA model. Redistributed concentrations for every trajectory are calculated as: </p>
+<p>
+  <img src="../image/formula/RTWC.gif" width="690" height="275" />
+<p>
+Then concentration field is iterated   until the average difference between the concentration fields of two successive iterations is below a criterion value (typically 0.5%):
+  <p>
+<img src="../image/formula/rtwc2.gif" width="704" height="263" /><p>
+<a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+<hr/><a name="pscf" id="pscf"></a>4.5 Potential  Source Contribution Function (PSCF) and multiple-site PSCF<br/>
+<blockquote>
+<p>The PSCF model has similar concept to CFA, however, a contribution function is applied instead of receptor concentration measurements. The contribution function is determined by a criterion value C (the parameter is adjustable in TraPSA), which is arbitrarily set (usually 80%~90% of the highest concentration). The contribution value of the endpoint on a back trajectory with receptor concentration larger than C is 1, otherwise the contribution value is 0: </p>
+<p>
+  <img src="../image/formula/pscf1.gif" width="519" height="160" />
+  <p>
+Then PSCF values are calculated  as follow:
+  <p>
+<img src="../image/formula/pscf2.gif" width="590" height="263" />
+  <p>
+The PSCF model can't be directly applied into multi-site analysis as a contribution function is applied. The multi-site PSCF analysis is defined as:
+  <p>
+<img src="../image/formula/pscf3.gif" width="658" height="208" /><p>
+<img src="../image/formula/pscf4.gif" width="725" height="304" /><p>
+<a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+<hr/><a name="sqtba" id="sqtba"></a>4.6 Simplified  Quantitative Transport Bias Analysis (SQTBA)<br/>
+<blockquote>
+The   uncertainties increase with the increasing trajectory length. The  uncertainties of trajectories were considered in SQTBA model, a simplification version of QTBA. SQTBA assumes a normal distribution caused by atmospheric dispersion is approximated about the trajectory centerline with a standard deviation that increases linearly with time in the upwind direction. Thus the transition probability density function can be expressed as:
+  <p>
+<img src="../image/formula/sqtba1.gif" width="1142" height="296" /><p>
+The potential mass transfer potential field for a given trajectory l, arriving at time t, is integrated over back trajectory time τ:<p>
+<img src="../image/formula/sqtba2.gif" width="360" height="150" /><p>
+The concentration-weighted mass transfer potential field is calculated as:<p>
+<img src="../image/formula/sqtba3.gif" width="519" height="148" /><p>
+Then final SQTBA field is obtained as follow:<p>
+<img src="../image/formula/sqtba4.gif" width="331" height="108" /><p>
+<a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+</blockquote>
+
+<hr/>
+<a name="algor2" id="algor2"></a><strong>5. Trend Analysis Algorithm:</strong><br/>
+<blockquote>
+<p>Detecting and assessing temporal trends of long term air pollutant concentration is important for  environmental studies, monitoring programs, and evaluating air pollution control policies. Trend evaluations are frequently used to determine whether it is reasonable to assume concentrations are temporally stationary (for example, to perform statistical evaluations that require stationary means) and to detect or model decreasing trends to support natural attenuation studies.</p>
+<p>TraPSA includes Kendall's tau and Sen's slope for trend analysis.</p>
+<hr/>
+<a name="mk" id="mk"></a>5.1 Kendall's tau<br/>
+<blockquote>
+  <p>Kendall’s tau  is a non-parametric measure of correlation between two data series. It provides whether the trend is positive or negative  and the strength of correlation between two data series. A negative correlation indicates  that when X is increasing then Y is decreasing.  It  presents the difference between the probability that the observed data are in the same order versus the probability  that the observed data are no in the same order. A higher absolute value of Kendall’s tau  implies a stronger positive or negative correlation.<br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </p>
+</blockquote>
+
+<hr/>
+<a name="sen" id="sen"></a>5.2 Sen's Slope<br/>
+<blockquote>
+  <p>Sen&rsquo;s  slope is a nonparametric linear regression models, which is robust to  outliers and non-normality in residuals. This method has been widely used in climate  and hydrological trend analysis. Sen&rsquo;s slope is defined as the median of the  slopes (y<sub>i</sub>-y<sub>j</sub>)/(x<sub>i</sub>-x<sub>j</sub>) determined by all pairs of sample points in a set  of two-dimensional points (x<sub>i</sub>, y<sub>i</sub>). </p>
+  <p><center><img src="../image/formula/Thiel-Sen_estimator.png" width="400" height="417" /></center><p>
+  The Theil–Sen estimator of a set of sample points with outliers (black line) compared to the non-robust simple linear regression line for the same set (blue). The dashed green line represents the ground truth from which the samples were generated.<p>
+    <a href="#top" class="top">Go Top</a><br/>
+  </p>
+</blockquote>
+
+</blockquote>
+
+<hr/>
+<a name="algor3" id="algor3"></a><strong>6. GIS Function Algorithm:</strong><br/>
+<blockquote>
+
+<p><a name="smoothing" id="smoothing"></a>6.1 Grid Smoothing</p>
+<blockquote>TraPSA  provides a basic grid smoothing and focalization function, it is calculated as  following method:
+  <p>
+<center><img src="../image/formula/smoothing.jpg" width="302" height="105" /></center><p>
+<br/><a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+<hr/><a name="peak" id="peak"></a>6.2 Grid Peak Identification<br/>
+<blockquote>
+TraPSA provides a basic grid peak identification function. One grid will be recognized as a  peak grid if its value is larger than any other surrounding grids. Then the  identified peak grids will be sorted by grid value from high to low, and the number of highest peak grids is adjustable in TraPSA.
+<br/>
+<a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+
+<hr/><a name="weight" id="weight"></a>6.3 Grid Weight<br/>
+<blockquote>
+ When cells are crossed by small number of
+trajectories, false source areas maybe found if some of
+the trajectories also pass real source areas, this is called “tailing effect”. A weighting function could be used to avoid “tailing effect”. It is defined as follows:
+   <p>
+  <img src="../image/formula/weight.gif" width="888" height="410" /><p>
+<a href="#top" class="top">Go Top</a><br/>
+</blockquote>
+</blockquote>
+
+<hr/>
+<a name="ack" id="ack"></a><strong>7. Acknowledgement:</strong><br/>
+<blockquote>
+  <p>Dr. Thomas M. Holsen, the director of the center for Air Resource Engineering &amp; Science (CARES), Clarkson University, the TraPSA project advisor, adviced on the software structure. 
+  <p>
+    Dr. Philip K. Hopke (retired), the diector of Institute for a Sustainable Environment (ISE), director of the center for Air Resource Engineering &amp; Science (CARES), Clarkson University, made valuable suggestions on trajectory ensemble receptor models. 
+  <p>Dr. Mark Cohen, NOAA Air Resources Lab, helped on the linkage between TraPSA and HYSPLIT software. <p>Hao Zhou, Ph.D candidate of Institute for a Sustainable Environment (ISE), Clarkson University, did most software testing work.<p>
+    <a href="#top" class="top">Go Top</a><br/>
+  </p>
+</blockquote>
+</div>
+
+<!-- InstanceEndEditable -->
+
+
+<div class="suf">
+<hr>
+© 2016 by Chuanlong Zhou. The center for Air Resource Engineering &amp; Science (CARES), Clarkson University.
+<br/>
+<br/>
+<br/>
+</div>
+
+</body>
+<!-- InstanceEnd --></html>

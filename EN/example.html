@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/temp.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Examples</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+
+<script src="../SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+
+</style><link href="../SpryAssets/T1.css" rel="stylesheet" type="text/css" /><style type="text/css">
+.head {
+	position: relative;
+	width: 90%;
+	left: 5%;
+}
+.main {
+	position: relative;
+	width: 90%;
+	left: 5%;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 24px;
+	color: #003;
+}
+.fun{
+	color: #F00;
+	}
+.string{
+	color: #63F;
+	}
+.anno{
+	color: #060;
+	}
+#la {
+	position: absolute;
+	left: 90%;
+	top: 35px;
+	width: 107px;
+	height: 10px;
+	z-index: 4;
+}
+</style>
+</head>
+
+<body >
+<div class="head">
+<div class="T2" id="la"><a href="../home.html">EN </a>| <a href="../中文/主页.html">中文</a></div>
+<div class="B">
+<span class="T1">TraPSA</span><br/>
+<span class="T2">Trajectory-based Potential Sourece Apportionment Project</span>
+<div class="split">.</div>
+</div>
+
+<ul id="MenuBar1" class="MenuBarHorizontal">
+  <li><a href="../home.html">Introduction</a>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="getstarted.html">Getting Start</a>
+      <ul>
+      <li><a href="basic.html">Basic Entries</a></li>
+      <li><a href="userguide.html">User's Guide</a></li>
+      <li><a href="example.html">Examples</a></li>
+      <li><a href="update.html">Updates</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="matlab.html">Matlab Package</a>
+      <ul>
+      <li><a href="receptormodel.html">Receptor Models</a></li>
+      <li><a href="trend.html">Trend Analysis</a></li>
+      <li><a href="gisfunction.html">GIS Functions</a></li>
+      <li><a href="otherfunction.html">Other Functions</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="downloads.html">Downloads</a>
+        <ul>
+      <li><a href="downloadtrapsa.html">TraPSA</a></li>
+      <li><a href="downloadmatlabcode.html">Matlab Package</a></li>
+      <li><a href="downloaddata.html">Map&MET Data</a></li>
+    </ul>
+  </li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"../SpryAssets/SpryMenuBarDownHover.gif", imgRight:"../SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+<br/>
+</div>
+
+<!-- InstanceBeginEditable name="main" -->
+<div class="main">
+<br/>
+  <a name="top" id="top"></a><strong>Index:</strong> <br/>
+  <a href="#eg1">1. Case Introduction</a><br/>
+  <a href="#eg2">2. Software Installation</a><br/>
+  <a href="#eg3">3. Before Analysis</a><br/> 
+  <a href="#eg4">4. Monitoring Site Database</a><br/> 
+  <a href="#eg5">5. Generate Trajectory</a><br/> 
+  <a href="#eg6">6. Item to be analysed</a><br/> 
+  <a href="#eg7">7. Basic Analysis</a><br/> 
+  <a href="#eg8">8. Trajectory Ensemble Receptor models</a><br/>
+  <a href="#eg9">9. Event Analysis</a><br/>
+  <a href="#eg10">10. Emission Inventory</a><br/> 
+  <a href="#eg11">11. GIS Editing</a><br/> 
+  <a href="#eg12">12. A Final Result</a><br/>  
+  <hr/>
+  <a name="eg1" id="eg1"></a> <strong>1. Case Introduction:</strong><br/>
+  <blockquote>
+  Atmospheric mercury data, including gaseous elemental mercury (GEM), gaseous oxidized mercury (GOM) and particulate-bound mercury (PBM),  were collected by <a href="http://nadp.sws.uiuc.edu/amn/" target="_blank">Atmospheric Mercury Network (AMNet)</a> at two monitoring site, Huntington (44.0, -74.2) and Bronx (40.9, -73.9). Data from 2013 to 2014 were used as example. The NCEP/NCAR Reanalysis Data Archive is used as meteorological data for generating trajectory endpoints.<br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+    <a name="eg2" id="eg2"></a> <strong>2. Software Installation:</strong><br/>
+  <blockquote>
+  Install TraPSA software following install wizard, set up installation folder of TraPSA and MATLAB runtime (if it has not been installed). If the installation package without MATLAB Runtime is downloaded and MATLAB Runtime has never been installed on the computer, it will take several minutes to download MATLAB runtime (about 440 MB). The better choice is to download the  installation package with MATLAB Runtime included. Note that in order to avoid unpredictable errors, do not install TraPSA into ‘C:\Program Files\’ and do not use shortcut.
+    <p>
+  <center><img src="../image/example/install.png" width="694" height="719" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+    <a name="eg3" id="eg3"></a> <strong>3. Before Analysis:</strong><br/>
+  <blockquote>
+  Path Setting:<p>
+  1. Click <span class="pp">File</span> → <span class="pp">Path Setting</span> to open the path setting window.<br/>
+2. Set the path folder for meteorological data, HYSPLIT (if it is installed), map data and output.<br/>
+3. Set default map center.<br/>
+4. Click <span class="pp">Confirm</span> to finish path setting.<br/>
+5. No default values for settings above.
+  <p>
+  <center><img src="../image/example/path1.png" width="716" height="578" /></center><br/>
+  Parameters Setting:
+<p>
+  1.	Click <span class="pp">Analysis</span> → <span class="pp">Setting</span> → <span class="pp">Grid</span> to set up the size of  grid cell of trajectory ensemble models, unit is degrees. TraPSA currently only supports uniform grid size. The default value of grid is 0.5.<br/>
+2.	Click <span class="pp">Analysis</span> → <span class="pp">Setting</span> → <span class="pp">Weight</span> to open the grid weighting set up window. Enter weight level number, click <span class="pp">√</span>.<br/>
+3.	Select weight level, enter weight range and weight factor, click <span class="pp">+</span> to confirm current weight level.<br/>
+4.	Select methods need to apply weighting, click <span class="pp">Apply</span> to finish weight set up. No default weighting values are applied.<br/>
+5.	Click <span class="pp">Analysis </span>→<span class="pp"> Setting</span> → <span class="pp">Parameter</span> to set up  parameters used in analysis, CPF criterion and minimum CPF wind speed (applied in CPF analysis, default values are 0.8 and 5), PSCF criterion (applied in PSCF analysis, default value is 0.8), peak number (applied in grid peak identification, controls the displayed peak number, default value is 10) and map projection method (Robinson or Mercator, default is Robinson). <br/>
+  <center><img src="../image/example/path2.png" width="723" height="618" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+    <a name="eg4" id="eg4"></a> <strong>4. Monitoring Site Database:</strong><br/>
+  <blockquote>
+  <p>Database Establishment and Update: </p>
+  <p>Site database will be established when pollutant data be imoprted at the first time. Trajectory Data will be imported into database after they were generated.</p>
+  1.	Click <span class="pp">File</span> → <span class="pp">Import Data</span> to open the import window.<br/>
+2.	Enter site information, including site name, site location, missing data information and data file path. If the pollutant data need to be updated, please enter the identical site name.<br/>
+3.	Copy the date from data file and <span class="pp">√</span> to make sure the date format is identifiable.<br/>
+4.	Click <span class="pp">Import</span>, then site information will change after the data is successfully imported or updated. Right click to see the detailed information if the panel is not big enough to display all the information.<br/>
+      
+    <center>
+      <img src="../image/example/database1.png" width="609" height="621" />
+    </center>
+    <br/>
+    <p>
+  1.	Click <span class="pp">File</span> → <span class="pp">Delete Data</span> to open the delete data window.<br/>
+2.	Select site, species or trajectory items that need to be discarded from database, then click Delete.<br/>
+
+  <center><img src="../image/example/database2.png" width="496" height="330" /></center><br/>
+  Data Export:
+  <p>
+  1. Click <span class="pp">Analysis </span>→<span class="pp"> Data</span> →<span class="pp"> Pollutants</span> to show all data in pollutant database. <br/>
+    2. Click <span class="pp">Export</span> to generate an excel file containing the selected site pollutant data.<br/>
+      3. Click <span class="pp">Analysis</span> → <span class="pp">Data</span> →<span class="pp"> Trajectory</span> to show all trajectory endpoints  database.<br/>
+      4. Click <span class="pp">Export</span> to generate an excel file containing the selected trajectory item.<br/>
+      5. Click <span class="pp">Export Shapefile</span> to generate a shapefile for the selected trajectory item.<br/>
+      <center><img src="../image/example/database3.png" width="1164" height="694" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+    <a name="eg5" id="eg5"></a> <strong>5. Generate Trajectory:</strong><br/>
+  <blockquote>
+    Set Up Trajectory:<p>
+    1.	Click <span class="pp">Trajectory</span> → <span class="pp">Set Up</span> to open the trajectory setting window.<br/>
+2.	Set trajectory parameters, including site, start-end date, starting height and trajectory time in the left panel. Three different units can be used for trajectory height. Note that the height number should be < 1 if the fraction of mixed layer is used as height unit. The unit is meter for other two options. The functions of two options will be introduced in the next part.<br/>
+3.	Set up meteorological data information in the right panel. <span class="pp">Name</span> is an arbitrary string used for labeling the trajectory item. The meteorological data filename is separated into three parts, date string, string before the date and string after the date. If multi-date file exists for one month, use ‘#’ instead of the incrementing number.<br/>
+4.	Click <span class="pp">Check</span> to check whether the time period has been analyzed by the current setting to avoid the repeated calculation. Click <span class="pp">Confirm</span> to generate a batch file for trajectory calculation.<br/>
+
+    <center><img src="../image/example/traj1.png" width="678" height="649"  /></center><br/>
+    Run Trajectory:
+    <p>
+    1.	Click <span class="pp">Trajectory</span> → <span class="pp">Run</span> to start HYSPLIT trajectory analysis. This step may take a relative long time depending on the number of data points, back trajectory time, meteorological data and computer configuration. It generally takes 3 to 10 minutes to run 3000 data points for 72 h back trajectory.<br/>
+2.	If option <span class="pp">Auto import endpoints</span> is applied, the endpoints files generated by HYSPLIT will be automatically imported into TraPSA.<br/>
+3.	If option <span class="pp">Keep trajectory files</span> is not applied, the original files generated by HYSPLIT will be automatically deleted from the output folder.<br/>
+
+    <center><img src="../image/example/traj2.png" width="551" height="601" /></center><br/>
+    Import Trajectory:
+    <p>
+    It is highly recommended using TraPSA to generate trajectory endpoints, it can do trajectory analysis in a smart and fast way. TraPSA also supports importing original HYSPLIT output files. These endpoints files must have identical date information  corresponding to the concentration data in database,  otherwise TraPSA can’t identify the files.
+    <p>
+1.	Click <span class="pp">Trajectory</span> → <span class="pp">Import</span> to import trajectory files generated by TraPSA if the option <span class="pp">Auto import endpoints</span> is not applied, or to import already existed HYSPLIT output files.<br/>
+2.	Select the site and trajectory item that needs to be imported, or click <span class="pp">Add New</span> to create a new trajectory item for current importing.<br/>
+3.	Click <span class="pp">Select Files</span> to select the endpoint file, then click <span class="pp">Import</span>. Note that the trajectory time should be the maximum back trajectory time of all the selected files.<br/>
+    <center><img src="../image/example/traj3.png" width="698" height="621" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+    <a name="eg6" id="eg6"></a> <strong>6. Item to be Analysed:</strong><br/>
+  <blockquote>
+  1.	Click <span class="pp">Add New</span> to add items need to be analysed.<br/>
+2.	An  item need to be analysed would be extracted from the database which  includes one pollutant species, one trajectory item, time periods (any specific time points or sort by season, weekdays and day period) and normalization method. These features can be selected in the corresponding panels.<br/>
+3.	A period without the trajectory item is not allowed to be added. Also make sure the selected trajectory time is less than the maximum back trajectory time. Then click <span class="pp">Add</span>.<br/>
+4.	Name the featured  item to be analysed with arbitrary string, click <span class="pp">OK</span>. Then add another analytic item.<br/>
+5.	Click <span class="pp">Finish</span> to close the window when all analytic items are added. These items will be shown in <span class="pp">Selected Items</span>.<br/>
+
+  <center><img src="../image/example/item.png" width="685" height="699" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+  <a name="eg7" id="eg7"></a> <strong>7. Basic Analysis:</strong><br/>
+  <blockquote>
+  1.	Click <span class="pp">Select Items</span>. Multiple analysising options  are allowed, however no multiple-site methods were used in basic analysis. Therefore, all the basic analysis will be carried out and displayed separately.<br/>
+2.	Click any basic method, and the results of selected items will be displayed in the figure panel.<br/>
+3.	Click the <span class="pp">pop-up menu</span> in the figure panel to switch figures. <span class="pp">Right click</span> on pop-up menu to delete the current figure.<br/>
+4.	Click <span class="pp">Save</span> in the figure panel to save current figure information, figure will be saved as a ‘.png’ file and its data will be saved as a text file into the output folder.<br/>
+
+  <center><img src="../image/example/basic.png" width="852" height="706" /></center><p>
+  Result Examples of Basic Analysis Methods:<p>
+  <center><img src="../image/example/basic2.png" width="1089" height="1682" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+    <a name="eg8" id="eg8"></a> <strong>8. Trajectory Ensemble Receptor models:</strong><br/>
+  <blockquote>
+  1.	Click <span class="pp">Select Items</span>. Multiple selections are allowed for trajectory based analysis.<br/>
+2.	Click any trajectory ensemble method. If multi-site is selected, a dialogue box will be display, click <span class="pp">No</span> to apply multi-site methods.<br/>
+3.	The result of trajectory ensemble model will be created as a new layer on the map panel. <br/>
+
+  <center><img src="../image/example/receptor.png" width="810" height="767" /></center><p>
+    Result Examples of Trajectory Ensemble Methods:<p>
+  <center><img src="../image/example/receptor2.png" width="1124" height="1260"/></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+    <a name="eg9" id="eg9"></a> <strong>9. Event Analysis:</strong><br/>
+  <blockquote>
+  1.	Click <span class="pp">Selected Event</span> to open the event selection window.<br/>
+2.	Any time point could be selected as an event. Highest or lowest events could be selected use the special events determination function. Click <span class="pp">√</span> to add events. <span class="pp">Right click</span> could delete the selected event.<br/>
+3. Click <span class="pp">Confirm</span> to progress.<br/>
+4.	Three figures will be created as shown below: trajectory lines will be created as a new layer on the map panel; the data points, which are selected as events, will be marked on the corresponding time series (the time series figure will be created if it is not existed); 3D trajectory lines will be generated. <br/>
+
+  <center><img src="../image/example/event.png" width="1146" height="733" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+    <a name="eg10" id="eg10"></a> <strong>10. Emission Inventory:</strong><br/>
+  <blockquote>
+1.	Click <span class="pp">Emission Inventory</span> to import the inventory file.<br/>
+2.	The import file should be organized as the format shown below.<br/>
+3.	The emissions inventory map will be created as a new layer on the map panel.<br/>
+
+<center><img src="../image/example/invertory.png" width="930" height="547" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+  <hr/>
+  
+  <a name="eg11" id="eg11"></a> <strong>11. GIS Editing:</strong><br/>
+  <blockquote>
+  Objects Editing:<p>
+      1. <span class="pp">Pop-up menu</span> on the right top of map is a switcher of map layer. <span class="pp">[X]</span> means the status of the layer is <span class="pp">on</span>, the layer is displayed on the map; <span class="pp">[O]</span> means the status of the layer is <span class="pp">off</span>, the layer is not displayed on the map. Left click to switch the status, <span class="pp">right click</span> to delete the layer. Note that the items will be stacked on the top when the status is changed from off to on.<br/>
+2. Click <span class="pp">Reset</span> to re-draw the map; click <span class="pp">Pan</span> to move the displayed map; click <span class="pp">Zoom</span> for map zoom in and zoom out; click <span class="pp">Color</span> to adjust the colorbar.<br/>
+3. Click <span class="pp">Text</span> to add text and point on the map. TraPSA allows the users to arbitrary determine the position of text or point if the <span class="pp">Location</span> is empty. The point will not be created if <span class="pp">Marker</span> is <span class="pp">n</span>.<br/>
+4. Click any item on the top of the map to adjust its properties, the possible adjustments are shown below.<br/>
+<center><img src="../image/example/gis.png" width="1036" height="758" /></center><br/>
+  Grid Editing:
+  <p>
+  Click <span class="pp">Focus</span> to apply grid smoothing; click <span class="pp">Peak</span> to identify and display the peak of current grid. The results after applying Focus and Peak are shown below.<br/>
+  <center><img src="../image/example/gis2.png" width="937" height="809" /></center><br/>
+  
+      <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+    <hr/>
+  <a name="eg12" id="eg12"></a> <strong>12. A Final Result:</strong><br/>
+  
+  <blockquote>
+  
+  A final result of multi-site PSCF analysis applying on Bronx and Huntington GOM is shown below. Click <span class="pp">Save</span> on map panel to generate a ‘.png’ file for the currently displayed map. The displayed grid (including original and smoothed grid) will be saved as a Geo TIFF file (‘.tif’). The displayed trajectory line will be saved as one shapefile (‘.shp’), and the displayed peak point will be saved as a text file that including latitude, longitude and intensity.
+  <center> <img src="../image/example/final.png" width="706" height="716" /></center><br/>
+    <a href="#top" class="top">Go Top</a><br/>
+  </blockquote>
+
+  
+</div>
+<!-- InstanceEndEditable -->
+
+
+<div class="suf">
+<hr>
+© 2016 by Chuanlong Zhou. The center for Air Resource Engineering &amp; Science (CARES), Clarkson University.
+<br/>
+<br/>
+<br/>
+</div>
+
+</body>
+<!-- InstanceEnd --></html>

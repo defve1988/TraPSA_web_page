@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/temp.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Basic Entries</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+
+<script src="../SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+
+</style><link href="../SpryAssets/T1.css" rel="stylesheet" type="text/css" /><style type="text/css">
+.head {
+	position: relative;
+	width: 90%;
+	left: 5%;
+}
+.main {
+	position: relative;
+	width: 90%;
+	left: 5%;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 24px;
+	color: #003;
+}
+.fun{
+	color: #F00;
+	}
+.string{
+	color: #63F;
+	}
+.anno{
+	color: #060;
+	}
+#la {
+	position: absolute;
+	left: 90%;
+	top: 35px;
+	width: 107px;
+	height: 10px;
+	z-index: 4;
+}
+</style>
+</head>
+
+<body >
+<div class="head">
+<div class="T2" id="la"><a href="../home.html">EN </a>| <a href="../中文/主页.html">中文</a></div>
+<div class="B">
+<span class="T1">TraPSA</span><br/>
+<span class="T2">Trajectory-based Potential Sourece Apportionment Project</span>
+<div class="split">.</div>
+</div>
+
+<ul id="MenuBar1" class="MenuBarHorizontal">
+  <li><a href="../home.html">Introduction</a>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="getstarted.html">Getting Start</a>
+      <ul>
+      <li><a href="basic.html">Basic Entries</a></li>
+      <li><a href="userguide.html">User's Guide</a></li>
+      <li><a href="example.html">Examples</a></li>
+      <li><a href="update.html">Updates</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="matlab.html">Matlab Package</a>
+      <ul>
+      <li><a href="receptormodel.html">Receptor Models</a></li>
+      <li><a href="trend.html">Trend Analysis</a></li>
+      <li><a href="gisfunction.html">GIS Functions</a></li>
+      <li><a href="otherfunction.html">Other Functions</a></li>
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="downloads.html">Downloads</a>
+        <ul>
+      <li><a href="downloadtrapsa.html">TraPSA</a></li>
+      <li><a href="downloadmatlabcode.html">Matlab Package</a></li>
+      <li><a href="downloaddata.html">Map&MET Data</a></li>
+    </ul>
+  </li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"../SpryAssets/SpryMenuBarDownHover.gif", imgRight:"../SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+<br/>
+</div>
+
+<!-- InstanceBeginEditable name="main" -->
+<div class="main">
+  <br/>
+  <strong>Trajectory:<br/>
+  </strong>
+The paths of infinitesimally small particles as they move through time and space, can be traced forward or backward in time along their trajectory.  
+<br/><br/>
+
+<strong>Endpoints:<br/>
+</strong>
+The infinitesimally small particles, &quot;marked&quot; at a certain point in space at a given time.
+<br/><br/>
+
+<strong>Air Parcel Trajectory Models:</strong><br/>
+Mathematical and experimental techniques used to calculate air parcel (infinitesimally small particles of air mass) trajectories for better understanding of atmospheric processes such as air pollution, dispersion of hazardous substances, or meteorological episodes. The most common air parcel trajectory models are <a href="http://www.arl.noaa.gov/HYSPLIT_info.php" target="_blank">HYSPLIT</a>, <a href="https://www.flexpart.eu/wiki" target="_blank">FLEXTRA</a> and <a href="http://db.cger.nies.go.jp/metex/index.html" target="_blank">METEX</a>. <br/>
+<br/>
+
+<strong>HYSPLIT Models:<br/>
+</strong>
+The HYSPLIT model, which is developed by National Oceanic and Atmospheric Administration (NOAA), is one of the most extensively used air parcel trajectory models in the atmospheric sciences community, provides a complete system for computing simple air parcel trajectories, as well as complex transport, dispersion, chemical transformation, and deposition simulations. A series of studies were applied HYSPLIT models for establishing source-receptor relationships. Therefore, TraPSA uses its latest version, HYSPLIY_4, as trajectory generator.
+<br/><br/>
+
+<strong>Receptor Modeling:</strong><br/>
+Receptor modeling is the application of multivariate statistical methods to the identification and quantitative apportionment of air pollutants to their sources.   Chemical transport models are combined with receptor and to provide improved apportionments. There   is now a substantial capability to provide useful insights into the sources of pollutants and their atmospheric processing that can help inform air quality management options.<br/>
+    <br/>
+    
+    <strong>Trajectory Ensemble Receptor Models:</strong><br/>
+    Trajectory ensemble receptor model is one of the receptor models for understanding the relationship of the source/receptor combining pollutant concentration measurement data and air parcel back trajectory calculations. A series of different trajectory ensemble receptor models were developed and applied for air pollution source likely location apportionment.
+    Current popular algorithms for trajectory ensemble receptor models includes Conditional Probability Function (CPF), Concentration Field Analysis (CFA), Concentration Weighted Trajectory (CWT), Potential Source Contribution Function (PSCF), Residence Time Weighted Concentration (RTWC), and Simplified Quantitative Transport Bias Analysis (SQTBA).<br/>
+
+</div>
+<!-- InstanceEndEditable -->
+
+
+<div class="suf">
+<hr>
+© 2016 by Chuanlong Zhou. The center for Air Resource Engineering &amp; Science (CARES), Clarkson University.
+<br/>
+<br/>
+<br/>
+</div>
+
+</body>
+<!-- InstanceEnd --></html>
