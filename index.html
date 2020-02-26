@@ -35,7 +35,27 @@ var config = {mapboxAccessToken: token};
 Plotly.newPlot('myDiv', data, layout, config);
 })
 // .header("Access-Control-Allow-Origin", "*")
-
+Password:
+<p/>
+<input id="data" type="text" name="lname" onkeydown="keyup_submit(event)"/>
+<p/>
+<input type="submit" value="submit"  onclick="test()"/>
 </script>
+  
+      <script type="text/javascript">
+        //测试
+        function test(){
+        //获取 输入框的值
+         if (document.getElementById("data").value=="123") {
+        window.open("true_index.html")
+          }
+        }
+       function keyup_submit(e){ 
+          var evt = window.event || e; 
+            if (evt.keyCode == 13){
+                  test()
+                      }
+                }
+    </script>
 </body>
 </html>
