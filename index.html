@@ -16,7 +16,7 @@ var link = "https://raw.githubusercontent.com/plotly/datasets/master/earthquakes
 var google ="https://docs.google.com/spreadsheets/d/e/2PACX-1vQJZy7du7Ny1myzVmgG7gee0FO9kZf06YrwNPz_XA00rVt8_W8g0dU7WybFNPIWctvRfLJ8jeOLRjxJ/pub?gid=0&single=true&output=csv"
 var file = "https://raw.githubusercontent.com/defve1988/test/master/earthquakes-23k.csv"
 // d3.csv(link,{"Access-Control-Allow-Origin", "*"})
-Plotly.d3.csv(file,
+Plotly.d3.csv("earthquakes-23k.csv",
   function(err, rows){function unpack(rows, key) {return rows.map(function(row){ return row[key];
 })};
 
